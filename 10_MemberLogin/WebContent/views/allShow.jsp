@@ -9,12 +9,16 @@
 <title>유저들 출력</title>
 </head>
 <body>
-	<% ArrayList<MemberDTO> list = (ArrayList) session.getAttribute("memList"); %>
+	<%
+	ArrayList<MemberDTO> list = (ArrayList) session.getAttribute("memList");
+	%>
 	<h1>현재 유저현황</h1>
 	
 	<hr>
 	
-	<% for(MemberDTO member : list) {%>
+	<%
+		for(MemberDTO member : list) {
+		%>
 	<p>이름 : <%= member.getName() %></p>
 	<p>주소 : <%= member.getAddr() %></p>
 	<% } %>
