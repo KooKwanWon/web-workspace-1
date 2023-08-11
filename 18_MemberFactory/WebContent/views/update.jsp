@@ -14,9 +14,9 @@
 	<form action="/update.do" method="post">
 		<%-- ID : <input type="text" value="${dto.id}" name="id" id="id" disabled> <br> --%>
 		ID : <input type="text" value="${vo.id}" name="id" id="id" readonly> <br>
-		PW : <input type="password" value="${vo.password}" name="pw" id="pw"> <br>
+		PW : <input type="password" value="${vo.password}" name="password" id="password"> <br>
 		이름 : <input type="text" value="${vo.name}" name="name" id="name"> <br>
-		주소 : <input type="text" value="${vo.address}" name="addr" id="addr"> <br>
+		주소 : <input type="text" value="${vo.address}" name="address" id="address"> <br>
 		
 		<input type="submit" value="send">
 	</form>

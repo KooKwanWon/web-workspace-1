@@ -17,9 +17,9 @@ public class RegisterController implements Controller {
 	
 		
 		String id = request.getParameter("id");
-		String password = request.getParameter("pw");
+		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String address = request.getParameter("addr");
+		String address = request.getParameter("address");
 
 		MemberVO vo = new MemberVO(id, password, name, address);
 		

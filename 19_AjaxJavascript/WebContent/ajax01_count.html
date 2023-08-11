@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>Show Count</h2>
+	
+	<input type="button" value="count 증가" onclick="startRequest()">
+	<div id="resultView"></div>
+	
+	<script>
+		let xhr;
+		function startRequest(){
+			xhr = new XMLHttpRequest();
+			//alert(xhr.readyState);
+			
+			xhr.onreadystatechange = callback;
+			//alert(xhr.readyState);
+			
+			xhr.open("get", "CountServlet?id=ajax&&pass=1212");
+			
+			xhr.send(null);
+			
+			//alert(xhr.readyState);
+		}
+		
+		function callback(){
+			//alert("callback :: " + xhr.readyState);
+			if(xhr.readyState === 4) {
+				//console.log(xhr.status);
+				if(xhr.status === 200){
+					const text = xhr.responseText;
+					document.querySelector("#resultView").innerHTML = "<h4>" + text + "</h4>";
+				}
+				
+			}
+		}
+		
+	</script>
+	
+</body>
+</html>

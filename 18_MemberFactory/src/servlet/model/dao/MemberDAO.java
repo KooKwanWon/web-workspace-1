@@ -62,7 +62,7 @@ public class MemberDAO implements MemberDAOTemplate {
 	public void registerMember(MemberVO vo) throws SQLException {
 		Connection conn = getConnection();
 		
-		String query = "INSERT INTO MEMBER_DTO(id, pw, name, addr) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO MEMBER_DTO(id, password, name, address) VALUES(?, ?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(query);
 		
 		ps.setString(1, vo.getId());
@@ -80,7 +80,7 @@ public class MemberDAO implements MemberDAOTemplate {
 	public MemberVO login(String id, String password) throws SQLException {
 		Connection conn = getConnection();
 		
-		String query = "SELECT * FROM MEMBER_DTO WHERE id=? AND pw=?";
+		String query = "SELECT * FROM MEMBER_DTO WHERE id=? AND password=?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		
 		ps.setString(1, id);
@@ -91,9 +91,9 @@ public class MemberDAO implements MemberDAOTemplate {
 		if(rs.next()) {
 			vo = new MemberVO();
 			vo.setId(rs.getString("id"));
-			vo.setPassword(rs.getString("pw"));
+			vo.setPassword(rs.getString("password"));
 			vo.setName(rs.getString("name"));
-			vo.setAddress(rs.getString("addr"));
+			vo.setAddress(rs.getString("address"));
 		}
 		closeAll(rs, ps, conn);
 		return vo;
@@ -113,9 +113,9 @@ public class MemberDAO implements MemberDAOTemplate {
 		if(rs.next()) {
 			vo = new MemberVO();
 			vo.setId(rs.getString("id"));
-			vo.setPassword(rs.getString("pw"));
+			vo.setPassword(rs.getString("password"));
 			vo.setName(rs.getString("name"));
-			vo.setAddress(rs.getString("addr"));
+			vo.setAddress(rs.getString("address"));
 		}
 		closeAll(rs, ps, conn);
 		return vo;
@@ -133,9 +133,9 @@ public class MemberDAO implements MemberDAOTemplate {
 		while(rs.next()) {
 			MemberVO vo = new MemberVO();
 			vo.setId(rs.getString("id"));
-			vo.setPassword(rs.getString("pw"));
+			vo.setPassword(rs.getString("password"));
 			vo.setName(rs.getString("name"));
-			vo.setAddress(rs.getString("addr"));
+			vo.setAddress(rs.getString("address"));
 			list.add(vo);
 		}
 		closeAll(rs, ps, conn);
@@ -145,7 +145,7 @@ public class MemberDAO implements MemberDAOTemplate {
 	@Override
 	public int update(MemberVO vo) throws SQLException {
 		Connection conn = getConnection();
-		String query = "UPDATE MEMBER_DTO SET PW = ?, NAME = ?, ADDR = ? WHERE ID = ?";
+		String query = "UPDATE MEMBER_DTO SET PASSWORD = ?, NAME = ?, ADDRESS = ? WHERE ID = ?";
 		
 		
 		PreparedStatement ps = conn.prepareStatement(query);

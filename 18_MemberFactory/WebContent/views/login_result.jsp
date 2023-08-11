@@ -22,7 +22,7 @@
 		
 		<c:otherwise>
 		<h3>로그인 실패..! 로그인부터 하고 오세요</h3>
-		<a href="login.html">login.html</a>
+		<a href="views/login.html">login.html</a>
 		</c:otherwise>
 	
 	</c:choose>

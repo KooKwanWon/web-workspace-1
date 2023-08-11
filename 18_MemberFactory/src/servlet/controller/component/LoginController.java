@@ -23,8 +23,10 @@ public class LoginController implements Controller {
 		request.setAttribute("vo", vo);
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("vo", vo);
-
+		
+		if(vo!=null) {
+			session.setAttribute("vo", vo);
+		}
 		String path = "views/login_result.jsp";
 	
 		
