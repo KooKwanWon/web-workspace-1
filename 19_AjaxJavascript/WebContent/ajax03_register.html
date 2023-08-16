@@ -37,9 +37,10 @@
 			
 			const id = document.querySelector("#id").value;
 						
-			xhr.open("get", "idcheck.do?id=" + id);
+			xhr.open("post", "idcheck.do");
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 			
-			xhr.send(null);
+			xhr.send("id=" + id);
 			
 		}
 		
