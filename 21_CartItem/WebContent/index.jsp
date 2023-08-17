@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	body{text-align : center}
+</style>
 </head>
+
 <body>
 	<h2>===== Fruit All Item =====</h2>
 	<a href="itemList.do">Show All Fruit Item Using Factory Pattern</a>

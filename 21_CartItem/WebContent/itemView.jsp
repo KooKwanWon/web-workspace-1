@@ -8,17 +8,24 @@
 <title>Insert title here</title>
 <style>
 	#index{text-align : center}
-
+	#con1{text-align : right}
+	
 	
 </style>
 
 </head>
 <body>
-	<div>조회수 : </div>
+	<h1 id="index">${list[val].itemName}의 정보</h1>
+	<div id="con1">
+	<a>조회수 : ${item.count}</a> &nbsp;&nbsp;&nbsp;
+	<a href=cartList.jsp>장바구니 담기</a> &nbsp;&nbsp;&nbsp;
+	<a href=cartList.jsp>장바구니 확인</a> &nbsp;&nbsp;&nbsp;
+	<a href=index.jsp>상품 목록 보기</a> &nbsp;&nbsp;&nbsp;
+	</div>
+	<br>
 	<table>
 	<tr>
 	<td>
-	<h1 id="index">${list[val].itemName}의 정보</h1>
 	<img src="${list[val].pictureUrl}" width="500px" height="300px">
 	</td>
 	<td>

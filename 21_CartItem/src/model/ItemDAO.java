@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import config.ServerInfo;
 
@@ -29,14 +30,6 @@ public class ItemDAO implements ItemDAOTemplate {
 		return dao;
 	}
 
-//		public MemberDAO() {
-//			try {
-//				Class.forName(ServerInfo.DRIVER_NAME);
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//		}
-
 	@Override
 	public Connection getConnection() throws SQLException {
 		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
@@ -56,68 +49,7 @@ public class ItemDAO implements ItemDAOTemplate {
 		closeAll(ps, conn);
 	}
 
-//	@Override
-//	public void registerMember(Item item) throws SQLException {
-//		Connection conn = getConnection();
-//
-//		String query = "INSERT INTO MEMBER_DTO(id, password, name, address) VALUES(?, ?, ?, ?)";
-//		PreparedStatement ps = conn.prepareStatement(query);
-//
-//		ps.setString(1, item.getId());
-//		ps.setString(2, item.getPassword());
-//		ps.setString(3, item.getName());
-//		ps.setString(4, item.getAddress());
-//
-//		ps.executeUpdate();
-//
-//		closeAll(ps, conn);
-//
-//	}
-//
-//	@Override
-//	public MemberVO login(String id, String password) throws SQLException {
-//		Connection conn = getConnection();
-//
-//		String query = "SELECT * FROM MEMBER_DTO WHERE id=? AND password=?";
-//		PreparedStatement ps = conn.prepareStatement(query);
-//
-//		ps.setString(1, id);
-//		ps.setString(2, password);
-//
-//		ResultSet rs = ps.executeQuery();
-//		MemberVO vo = null;
-//		if (rs.next()) {
-//			vo = new MemberVO();
-//			vo.setId(rs.getString("id"));
-//			vo.setPassword(rs.getString("password"));
-//			vo.setName(rs.getString("name"));
-//			vo.setAddress(rs.getString("address"));
-//		}
-//		closeAll(rs, ps, conn);
-//		return vo;
-//	}
-//
-//	@Override
-//	public MemberVO findByIdMember(String id) throws SQLException {
-//		Connection conn = getConnection();
-//
-//		String query = "SELECT * FROM MEMBER_DTO WHERE id=?";
-//		PreparedStatement ps = conn.prepareStatement(query);
-//
-//		ps.setString(1, id);
-//
-//		ResultSet rs = ps.executeQuery();
-//		MemberVO vo = null;
-//		if (rs.next()) {
-//			vo = new MemberVO();
-//			vo.setId(rs.getString("id"));
-//			vo.setPassword(rs.getString("password"));
-//			vo.setName(rs.getString("name"));
-//			vo.setAddress(rs.getString("address"));
-//		}
-//		closeAll(rs, ps, conn);
-//		return vo;
-//	}
+
 
 	@Override
 	public ArrayList<Item> getAllItem() throws SQLException {
@@ -137,6 +69,7 @@ public class ItemDAO implements ItemDAOTemplate {
 			item.setPictureUrl(rs.getString("PICTURE_URL"));
 			item.setCount(rs.getInt("COUNT"));
 			list.add(item);
+		
 		}
 		closeAll(rs, ps, conn);
 		return list;
@@ -146,13 +79,66 @@ public class ItemDAO implements ItemDAOTemplate {
 
 	@Override
 	public Item getItem(int itemId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Connection conn = getConnection();
+		
+		String query = "SELECT * FROM ITEM WHERE ITEM_ID = ?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, itemId);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Item item = new Item();
+		
+		if(rs.next()) {
+		item.setItemId(rs.getInt("ITEM_ID"));
+		item.setItemName(rs.getString("ITEM_NAME"));
+		item.setPrice(rs.getInt("PRICE"));
+		item.setDescription(rs.getString("DESCRIPTION"));
+		item.setPictureUrl(rs.getString("PICTURE_URL"));
+		item.setCount(rs.getInt("COUNT"));
+		
+		return item;
+		}
+		
+		
+		closeAll(rs, ps, conn);
+
+		
+		return item;
 	}
 
 	@Override
 	public boolean updateRecordCount(int itemId) throws SQLException {
-		// TODO Auto-generated method stub
+		
+				
+		Connection conn = getConnection();
+		
+		String query = "UPDATE ITEM SET COUNT=? WHERE ITEM_ID=?";
+		PreparedStatement ps = conn.prepareStatement(query);
+			
+		
+		Item item = new Item();
+		item = getItem(itemId);
+		
+		
+		int num1 = item.getCount();
+		int id = item.getItemId();
+		
+		ps.setInt(1, num1+1);
+		ps.setInt(2, id);
+		
+				
+		int result = ps.executeUpdate();
+			
+		
+		if(result == 1) {
+			
+			return true;
+		}
+		
+		closeAll(ps, conn);
+	
 		return false;
 	}
 	

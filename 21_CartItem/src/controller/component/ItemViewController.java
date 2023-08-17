@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.tribes.util.Arrays;
+
 import controller.Controller;
 import controller.ModelAndView;
 import model.Item;
@@ -18,10 +20,20 @@ public class ItemViewController implements Controller {
 
 		String path = "itemView.jsp";
 		
-		int val = Integer.parseInt(request.getParameter("val"));
 		
-		System.out.println(val);
+		int val = Integer.parseInt(request.getParameter("val"));
+
+		Item item = new Item();
+		
+		
+		if(ItemDAO.getInstance().updateRecordCount((val+1))) {
+			
+			item = ItemDAO.getInstance().getItem((val+1));
+			
+		}
+		
 		request.setAttribute("val", val);
+		request.setAttribute("item", item);
 		
 		return new ModelAndView(path);
 		

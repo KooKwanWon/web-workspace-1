@@ -19,8 +19,20 @@ public class ItemListController implements Controller {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Item> list = new ArrayList<Item>();
+		ArrayList<Item> list2 = new ArrayList<Item>();
 		list = ItemDAO.getInstance().getAllItem();
 		String path = "index.jsp";
+		
+		for(int i = 0; i < 5; i++) {
+			if(list.get(i).getCount()>0) {
+				Item item = new Item();
+				item.setItemId(list.get(i).getItemId());
+				item.setPictureUrl(list.get(i).getPictureUrl());
+				item.setCount(list.get(i).getCount());
+				list2.add(item);
+			}
+		}
+		session.setAttribute("list2", list2);
 		
 //		int val = Integer.parseInt(request.getParameter("val"));
 		
