@@ -4,9 +4,9 @@ public class MemberVO {
 	private String name;
 	private int age;
 	private String addr;
+	
 	public MemberVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public MemberVO(String name, int age, String addr) {
 		super();

@@ -15,9 +15,9 @@ public class UpdateController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String password = request.getParameter("pw");
 		String name = request.getParameter("name");
-		String address = request.getParameter("address");
+		String address = request.getParameter("addr");
 
 		MemberVO vo = new MemberVO(id, password, name, address);
 				

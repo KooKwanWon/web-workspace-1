@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import servlet.model.MemberDAO;
 import servlet.model.MemberVO;
@@ -28,18 +29,18 @@ public class ViewMemberServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 		
+//		HttpSession session = request.getSession();
+//		session.setAttribute("list", list);
 		
 		// 2. 바인딩
 		request.setAttribute("list", list);
 		
 		// 3. 네비게이션 --> viewMember.jsp
-
 		request.getRequestDispatcher("viewMember.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

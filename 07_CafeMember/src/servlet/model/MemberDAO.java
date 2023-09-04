@@ -55,7 +55,7 @@ public class MemberDAO implements MemberDAOTemplate {
 
 		// 3. Statement 객체 생성
 
-		String query = "INSERT INTO MEMBER(NAME, AGE, ADDR) VALUES(?, ?, ?)"; // or properties 생성
+		String query = "INSERT INTO MEMBER_07(NAME, AGE, ADDR) VALUES(?, ?, ?)"; // or properties 생성
 		PreparedStatement ps = conn.prepareStatement(query);
 
 		ps.setString(1, vo.getName());
@@ -76,7 +76,7 @@ public class MemberDAO implements MemberDAOTemplate {
 
 		// 3. Statement 객체 생성
 
-		String query = "SELECT * FROM MEMBER";
+		String query = "SELECT * FROM MEMBER_07";
 		PreparedStatement st = conn.prepareStatement(query);
 		ResultSet rs = st.executeQuery();
 //		System.out.println(rs);
@@ -101,7 +101,7 @@ public class MemberDAO implements MemberDAOTemplate {
 	
 		// 3. Statement 객체 생성
 
-		String query = "SELECT * FROM MEMBER WHERE NAME = ?";
+		String query = "SELECT * FROM MEMBER_07 WHERE NAME = ?";
 		PreparedStatement st = conn.prepareStatement(query);
 		st.setString(1, name);
 		ResultSet rs = st.executeQuery();

@@ -31,8 +31,6 @@ public class EntranceServlet extends HttpServlet {
 //	public void init(ServletConfig config) throws ServletException {
 //		context = config.getServletContext();
 //		context.setAttribute("list", list);	//로그인 했을때만 등록하고 싶다면 이 방식 X
-		
-		
 //	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +40,14 @@ public class EntranceServlet extends HttpServlet {
 		int age;
 		
 		name = request.getParameter("name");
-		age = request.getParameter("age")!=null ? Integer.parseInt(request.getParameter("age")) : 0;	// 나이(age)가 null 일때 기본값 0(로그인 하고 jsp 접근시 오류 제거)
+	
+		if(request.getParameter("age")!=null) {
+			age = Integer.parseInt(request.getParameter("age"));
+		}else {
+			age = 0;
+		}
+		
+//		age = request.getParameter("age")!=null ? Integer.parseInt(request.getParameter("age")) : 0;	// 나이(age)가 null 일때 기본값 0(로그인 하고 jsp 접근시 오류 제거)
 		addr = request.getParameter("addr");
 		
 		MemberVO vo = new MemberVO(name, age, addr);
@@ -68,10 +73,10 @@ public class EntranceServlet extends HttpServlet {
 		response.sendRedirect("view");	// 굳이 위처럼 안가고 redirect로 응답
 		
 		
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 		
 //		out.println("<a href='viewMember.jsp'>결과보기</a>");
-		out.close();
+//		out.close();
 		
 	}
 

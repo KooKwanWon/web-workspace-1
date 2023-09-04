@@ -80,24 +80,16 @@
 			const age = document.querySelector("#age");
 			const regExp = /^[0-9]+$/;
 			console.log(regExp.test(age.value));
-			
-			
-			
 			//console.log("NaN : " + isNaN(age.value));
 			//if(inNaN(age)){
 				//window.alert("나이는 숫자만 입력하세요!!");
 				//return false;
 			//}
 			
-			
-			
 			if(regExp.test(age.value) === false){
 				window.alert("나이는 숫자만 입력하세요!!");
 				return false;
-				
 			}
-			
-			
 			
 			return true;
 		}

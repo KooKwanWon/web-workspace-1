@@ -187,6 +187,6 @@ public class MemberDAO implements MemberDAOTemplate {
 			
 		} catch (SQLException e) {}
 	}
-
 	
+
 }

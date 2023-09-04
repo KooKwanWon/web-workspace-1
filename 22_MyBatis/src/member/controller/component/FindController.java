@@ -18,20 +18,18 @@ public class FindController implements Controller {
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String path = "views/find_fail.jsp";
-	
-		String id = request.getParameter("id");
-		String address = request.getParameter("address");
 		
+		String id = request.getParameter("id");
+		String addr = request.getParameter("addr");
+		
+		String[] idList = request.getParameterValues("checkId");
 		
 		MemberVO vo = new MemberVO();
-		if(id!="") {
-			vo.setId(id);
-		}
-		if(address!=""){
-			vo.setAddress(address);
-		}
+		if(id!="") vo.setId(id);
+		if(addr!="") vo.setAddr(addr);
 		
-		List<MemberVO> list = new MemberService().findByIdMember(vo);
+		
+		List<MemberVO> list = new MemberService().findByIdMember(idList);
 		
 //		System.out.println(vo.getId());
 		

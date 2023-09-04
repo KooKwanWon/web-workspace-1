@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 
-<%
-MemberDTO dto = (MemberDTO) session.getAttribute("dto");
+<% 
+	MemberDTO dto = (MemberDTO) session.getAttribute("dto");
 	if(dto!=null) {
 		session.invalidate();
-%>
+ %>
 <body onload="return logout()">
 	
 	<script>

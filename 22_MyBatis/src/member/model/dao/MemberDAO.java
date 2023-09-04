@@ -39,8 +39,8 @@ public class MemberDAO {
 		return sqlSession.selectList("memberMapper.showAllMember");
 	}
 	
-	public List<MemberVO> findByIdMember(SqlSession sqlSession, MemberVO vo) {
-		return sqlSession.selectList("memberMapper.findByIdMember", vo);
+	public List<MemberVO> findByIdMember(SqlSession sqlSession, List<String> list ) {
+		return sqlSession.selectList("memberMapper.findByIdMember", list);
 	}
 	
 	public MemberVO login(SqlSession sqlSession, MemberVO vo) {

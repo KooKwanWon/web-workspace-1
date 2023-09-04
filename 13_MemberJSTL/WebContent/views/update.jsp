@@ -8,17 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	
 	<%-- ${dto.id}--%>
-	<h2>회원 정보 수정</h2>
-
 	<form action="/UpdateServlet" method="post">
-		ID : <input type="text" value="${dto.id}" name="id" id="id" disabled> <br>
+		<%-- ID : <input type="text" value="${dto.id}" name="id" id="id" disabled> <br> --%>
+		ID : <input type="text" value="${dto.id}" name="id" id="id" readonly> <br>
 		PW : <input type="password" value="${dto.password}" name="pw" id="pw"> <br>
 		이름 : <input type="text" value="${dto.name}" name="name" id="name"> <br>
 		주소 : <input type="text" value="${dto.address}" name="addr" id="addr"> <br>
 		
-		<input type="submit" value="정보수정">
+		<input type="submit" value="send">
 	</form>
 
 </body>
